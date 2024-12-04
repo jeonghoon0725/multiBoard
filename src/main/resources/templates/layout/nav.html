@@ -1,12 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      data-bs-theme="auto"
+      lang="ko">
 <main>
-    <header class="py-3 mb-4 border-bottom">
-        <div class="container d-flex flex-wrap justify-content-center">
-            <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
-                <span class="fs-4">게시판</span>
-            </a>
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search" style="width: 220px;">
-                <input type="search" class="form-control" placeholder="검색어를 입력해 주세요." aria-label="Search">
+    <h1>스프링 시큐리티 테스트</h1>
+    <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
+        Logged in user: <span sec:authentication="name"></span> | Roles: <span sec:authentication="principal.authorities"></span>
+        <div>
+            <form action="#" th:action="@{/logout}" method="post">
+                <input type="submit" value="Logout"/>
             </form>
         </div>
-    </header>
+        <li><a href="/user">User</a></li>
+    </div>
+    <div sec:authorize="!isAuthenticated()">
+        <li><a href="/login">로그인</a></li>
+    </div>
+
+
+
 </main>
+
+</html>
