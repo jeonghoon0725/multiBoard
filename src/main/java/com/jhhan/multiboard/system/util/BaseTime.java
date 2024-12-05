@@ -1,4 +1,4 @@
-package com.jhhan.multiboard.user.entity;
+package com.jhhan.multiboard.system.util;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-abstract class BaseTime {
+public abstract class BaseTime {
 
     @Column(name = "cdate", nullable = false)
     @CreatedDate

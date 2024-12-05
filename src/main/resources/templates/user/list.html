@@ -1,8 +1,12 @@
+<!Doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      data-bs-theme="auto"
+      lang="ko">
+
 <script type="text/javascript">
-    $(document).ready(function(){
-        console.log("test")
-        console.log('${users}')
-    });
+
 
 </script>
 
@@ -36,12 +40,12 @@
                 <tbody>
                 <tr th:each="user : ${users}">
 
+                    <td><span th:text="${user.id}"></span></td>
                     <td><span th:text="${user.username}"></span></td>
                     <td><span th:text="${user.password}"></span></td>
                     <td><span th:text="${user.nickname}"></span></td>
                     <td><span th:text="${user.email}"></span></td>
-                    <td><span th:text="${user.cdate}"></span></td>
-                    <td><span th:text="${user.mdate}"></span></td>
+
 
                 </tr>
                 <tr>
@@ -63,3 +67,4 @@
         </div>
     </div>
 </main>
+</html>
