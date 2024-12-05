@@ -1,4 +1,4 @@
-package com.jhhan.multiBoard.Board;
+package com.jhhan.multiboard.board;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +17,4 @@ public class BoardController {
         return "index1";
     }
 
-    @GetMapping("/login")
-    public String login(Model model) {
-        return "user/login";
-    }
 }

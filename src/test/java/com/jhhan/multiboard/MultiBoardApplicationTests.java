@@ -1,4 +1,4 @@
-package com.jhhan.multiBoard;
+package com.jhhan.multiboard;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
