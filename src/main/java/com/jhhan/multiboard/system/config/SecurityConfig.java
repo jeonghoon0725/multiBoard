@@ -55,11 +55,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();//잠시 비활성화
 
         http.authorizeHttpRequests()
-                .antMatchers("/", "/login", "/user/**").permitAll()
+                .antMatchers("/", "/user/**").permitAll()
                 .anyRequest().authenticated();//위에 외에는 인증 필요
 
         http.formLogin()
-            .loginPage("/login")
+            .loginPage("/user/login")
             .loginProcessingUrl("/loginProc")//낚아챌 내 로그인 페이지 호출 주소
             //.failureHandler(customFailureHandler)
             .defaultSuccessUrl("/");
