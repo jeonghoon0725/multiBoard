@@ -1,6 +1,6 @@
-package com.jhhan.multiboard.board.repository;
+package com.jhhan.multiboard.posts.repository;
 
-import com.jhhan.multiboard.board.entity.Posts;
+import com.jhhan.multiboard.posts.entity.Posts;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

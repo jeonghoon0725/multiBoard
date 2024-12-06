@@ -1,5 +1,6 @@
 package com.jhhan.multiboard.system.config;
 
+import com.jhhan.multiboard.system.auth.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +20,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableGlobalMethodSecurity(prePostEnabled = true)//특정 주소로 접근하면 권한 및 인증을 미리 체크하기 위해 사용
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    //private final CustomUserDetailsService customUserDetailsService;
+    private final CustomUserDetailsService customUserDetailsService;
 
     //private AuthenticationFailureHandler customFailureHandler;
 
@@ -30,18 +31,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //auth.userDetailsService(customUserDetailsService).passwordEncoder(encoder());
+        auth.userDetailsService(customUserDetailsService).passwordEncoder(encoder());
 
-        auth.inMemoryAuthentication()
-                .passwordEncoder(passwordEncoder())
-                .withUser("user")
-                .password(passwordEncoder().encode("1234"))
-                .roles(("USER"));
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(passwordEncoder())
+//                .withUser("user")
+//                .password(passwordEncoder().encode("1234"))
+//                .roles(("USER"));
     }
 
-    private PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    private PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
     //static 관련 인증 무시
     @Override

@@ -1,7 +1,8 @@
-package com.jhhan.multiboard.board.controller;
+package com.jhhan.multiboard.posts.controller;
 
-import com.jhhan.multiboard.board.entity.Posts;
-import com.jhhan.multiboard.board.service.PostsService;
+import com.jhhan.multiboard.posts.entity.Posts;
+import com.jhhan.multiboard.posts.service.PostsService;
+import com.jhhan.multiboard.system.dto.UserSessionDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Slf4j
@@ -20,20 +22,14 @@ public class PostsController {
     private PostsService postsService;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, HttpSession session) {
 
         List<Posts> posts = postsService.getPostsList();
 
-//        log.debug("==========================");
-//        log.debug(posts.toString());
-//        log.debug("==========================");
-
-        System.out.println("======================");
-        for (Posts post : posts) {
-            System.out.println(post.toString());
+        UserSessionDto user = (UserSessionDto) session.getAttribute("user");
+        if(user != null) {
+            model.addAttribute("user", user.getNickname());
         }
-
-        System.out.println("======================");
 
         model.addAttribute("posts", posts);
 

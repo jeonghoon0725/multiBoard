@@ -1,5 +1,6 @@
 package com.jhhan.multiboard.user.controller;
 
+import com.jhhan.multiboard.user.dto.UserDto;
 import com.jhhan.multiboard.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,8 +34,8 @@ public class UserController {
      * @return
      */
     @PostMapping("/joinProc")
-    public String joinProc() {//joinProc(UserDto dto) {
-        //userService.userJoin(dto);
+    public String joinProc(UserDto dto) {
+        userService.userJoin(dto);
 
         return "redirect:/user/login";
     }

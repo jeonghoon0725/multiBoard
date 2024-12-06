@@ -15,26 +15,26 @@ import java.util.Collection;
 @AllArgsConstructor
 public class CustomUserDetails implements UserDetails {
 
-    //private final User user;
+    private final User user;//service에서 받고
 
     //유저 권한 목록 조회
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
 
-        //authorities.add(() -> "ROLE_" + user.getRole());
+        authorities.add(() -> "ROLE_" + user.getRole());
         
         return authorities;
     }
 
     @Override
     public String getPassword() {
-        return "";
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return "";
+        return user.getUsername();
     }
 
     //계정 만료 여부 false : 만료됨
