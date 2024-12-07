@@ -1,7 +1,9 @@
 package com.jhhan.multiboard.user.controller;
 
 import com.jhhan.multiboard.user.dto.UserDto;
+import com.jhhan.multiboard.user.entity.User;
 import com.jhhan.multiboard.user.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
+@Slf4j
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -42,7 +46,10 @@ public class UserController {
 
     @GetMapping("")
     public String getAllUser(Model model, HttpSession session) {
-        model.addAttribute("users", userService.getAllUsers());
+
+        List<User> users = userService.getAllUsers();
+
+        model.addAttribute("users", users);
         return "user/list";
     }
 

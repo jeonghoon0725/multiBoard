@@ -3,6 +3,7 @@ package com.jhhan.multiboard.system.auth;
 import com.jhhan.multiboard.user.entity.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
@@ -22,7 +23,8 @@ public class CustomUserDetails implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
 
-        authorities.add(() -> "ROLE_" + user.getRole());
+        //authorities.add(() -> "ROLE_" + user.getRole());
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole()));
         
         return authorities;
     }
