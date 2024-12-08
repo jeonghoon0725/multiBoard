@@ -1,17 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      data-bs-theme="auto"
+      lang="ko">
+
 <main>
     <nav class="py-2 bg-body-tertiary border-bottom">
         <div class="container d-flex flex-wrap">
             <ul class="nav me-auto">
-                <li class="nav-item"><a href="/" class="nav-link link-body-emphasis px-2 active" aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Portfolio</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Blog</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">FAQs</a></li>
+                <li class="nav-item"><a href="/" class="nav-link link-body-emphasis px-2 active" aria-current="page">홈(게시판)</a></li>
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">포트폴리오</a></li>
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">블로그</a></li>
+<!--                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">FAQs</a></li>-->
                 <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
             </ul>
-            <ul class="nav">
+            <ul class="nav" sec:authorize="!isAuthenticated()">
                 <li class="nav-item"><a href="/user/login" class="nav-link link-body-emphasis px-2">로그인</a></li>
                 <li class="nav-item"><a href="/user/join" class="nav-link link-body-emphasis px-2">회원가입</a></li>
+            </ul>
+            <ul class="nav" th:fragment="logout" sec:authorize="isAuthenticated()">
+                <li class="nav-item">
+                    <a href="/user/info" class="nav-link link-body-emphasis px-2">
+                        <span th:text="${nickname}"></span> 님, 안녕하세요!
+                    </a>
+                </li>
+                <li class="nav-item">
+<!--                    <form th:action="@{/logout}" method="post" style="display: inline;">-->
+                    <form th:action="@{/logout}" method="post">
+<!--                        <button type="submit" class="btn btn-link nav-link link-body-emphasis px-2" style="border: none; padding: 0;">-->
+                        <button type="submit" class="btn btn-link nav-link link-body-emphasis px-2">
+                            로그아웃
+                        </button>
+                    </form>
+                </li>
             </ul>
         </div>
     </nav>
 </main>
+
+</html>

@@ -1,5 +1,6 @@
 package com.jhhan.multiboard.user.controller;
 
+import com.jhhan.multiboard.system.dto.UserSessionDto;
 import com.jhhan.multiboard.user.dto.UserDto;
 import com.jhhan.multiboard.user.entity.User;
 import com.jhhan.multiboard.user.service.UserService;
@@ -29,6 +30,21 @@ public class UserController {
 
     @GetMapping("/join")
     public String join() {
+        return "user/join";
+    }
+
+    @GetMapping("/info")
+    public String info(Model model, HttpSession session) {
+
+        Object obj = session.getAttribute("user");
+        if(obj == null) {
+            return "index";
+        }
+
+        UserSessionDto user = (UserSessionDto) obj;
+
+        model.addAttribute("user", user);
+
         return "user/join";
     }
 

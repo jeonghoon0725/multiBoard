@@ -28,7 +28,7 @@ public class PostsController {
 
         UserSessionDto user = (UserSessionDto) session.getAttribute("user");
         if(user != null) {
-            model.addAttribute("user", user.getNickname());
+            model.addAttribute("nickname", user.getNickname());
         }
 
         model.addAttribute("posts", posts);
