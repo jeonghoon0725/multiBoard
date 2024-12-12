@@ -10,5 +10,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     //security & null 처리
     Optional<User> findByUsername(String username);
 
-
+    //
+    User findByNickname(String nickname);
 }

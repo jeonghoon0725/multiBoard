@@ -3,42 +3,42 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       data-bs-theme="auto"
       lang="ko">
-<main>
-    <h1>스프링 시큐리티 테스트</h1>
-    <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
-        Logged in user: <span sec:authentication="name"></span> | Roles: <span sec:authentication="principal.authorities"></span>
-        <div>
-            <form action="#" th:action="@{/logout}" method="post">
-                <input type="submit" value="Logout"/>
-            </form>
-        </div>
-<!--        <li><a href="/user">User</a></li>-->
-        <li><button id="userList" data-url="/user">사용자 리스트</button></li>
+<!--<main>-->
+<!--    <h1>스프링 시큐리티 테스트</h1>-->
+<!--    <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">-->
+<!--        Logged in user: <span sec:authentication="name"></span> | Roles: <span sec:authentication="principal.authorities"></span>-->
+<!--        <div>-->
+<!--            <form action="#" th:action="@{/logout}" method="post">-->
+<!--                <input type="submit" value="Logout"/>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--&lt;!&ndash;        <li><a href="/user">User</a></li>&ndash;&gt;-->
+<!--        <li><button id="userList" data-url="/user">사용자 리스트</button></li>-->
 
-    </div>
-    <div id="content">
-        <p>이곳에 페이지가 로드됩니다.</p>
-    </div>
-    <div sec:authorize="!isAuthenticated()">
-        <li><a href="/user/login">로그인</a></li>
-    </div>
+<!--    </div>-->
+<!--    <div id="content">-->
+<!--        <p>이곳에 페이지가 로드됩니다.</p>-->
+<!--    </div>-->
+<!--    <div sec:authorize="!isAuthenticated()">-->
+<!--        <li><a href="/user/login">로그인</a></li>-->
+<!--    </div>-->
 
 
 
-</main>
+<!--</main>-->
 
 <script>
-    document.querySelectorAll('button').forEach(button => {
-        button.addEventListener('click', function () {
-            const url = button.getAttribute('data-url'); // 버튼의 URL 가져오기
-            fetch(url)
-                .then(response => response.text())
-                .then(html => {
-                    document.getElementById('content').innerHTML = html; // 콘텐츠 교체
-                })
-                .catch(error => console.error('Error loading content:', error));
-        });
-    });
+    // document.querySelectorAll('button').forEach(button => {
+    //     button.addEventListener('click', function () {
+    //         const url = button.getAttribute('data-url'); // 버튼의 URL 가져오기
+    //         fetch(url)
+    //             .then(response => response.text())
+    //             .then(html => {
+    //                 document.getElementById('content').innerHTML = html; // 콘텐츠 교체
+    //             })
+    //             .catch(error => console.error('Error loading content:', error));
+    //     });
+    // });
 
 </script>
 

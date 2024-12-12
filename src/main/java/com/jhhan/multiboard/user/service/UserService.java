@@ -1,6 +1,7 @@
 package com.jhhan.multiboard.user.service;
 
 import com.jhhan.multiboard.user.dto.UserDto;
+import com.jhhan.multiboard.user.dto.UserRequestDto;
 import com.jhhan.multiboard.user.entity.User;
 import com.jhhan.multiboard.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,4 +29,13 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
+    // 영속성 컨텍스트 - 변경 감지(더티 체킹)
+    public void modifyUser(UserRequestDto dto) {
+        User user = userRepository.findById(dto.getId()).orElseThrow(() -> new RuntimeException("해당 회원이 존재하지 않습니다."));
+
+        String encPassword = encoder.encode(dto.getPassword());
+        user.modify(dto.getNickname(), encPassword);
+    }
+
 }

@@ -36,16 +36,12 @@ public class UserController {
     @GetMapping("/info")
     public String info(Model model, HttpSession session) {
 
-        Object obj = session.getAttribute("user");
-        if(obj == null) {
-            return "index";
+        UserSessionDto userSessionDto = (UserSessionDto) session.getAttribute("user");
+        if(userSessionDto != null) {
+            model.addAttribute("userSessionDto", userSessionDto);
         }
 
-        UserSessionDto user = (UserSessionDto) obj;
-
-        model.addAttribute("user", user);
-
-        return "user/join";
+        return "user/info";
     }
 
     /**
