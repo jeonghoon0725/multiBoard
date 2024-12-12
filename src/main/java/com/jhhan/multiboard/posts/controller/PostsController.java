@@ -28,7 +28,7 @@ public class PostsController {
 
         UserSessionDto user = (UserSessionDto) session.getAttribute("user");
         if(user != null) {
-            model.addAttribute("nickname", user.getNickname());
+            model.addAttribute("user", user);
         }
 
         model.addAttribute("posts", posts);
@@ -41,7 +41,14 @@ public class PostsController {
         return "index1";
     }
 
-
+    @GetMapping("/posts/write")
+    public String write(Model model, HttpSession session) {
+        UserSessionDto user = (UserSessionDto) session.getAttribute("user");
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
+        return "posts/write";
+    }
 
 
 }
