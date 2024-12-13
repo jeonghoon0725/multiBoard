@@ -3,10 +3,7 @@ package com.jhhan.multiboard.posts.dto;
 import com.jhhan.multiboard.posts.entity.Posts;
 import com.jhhan.multiboard.user.entity.Role;
 import com.jhhan.multiboard.user.entity.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
@@ -34,5 +31,28 @@ public class PostsDto {
                 .build();
 
         return posts;
+    }
+
+    @Getter
+    public static class Response {
+        private final Long id;
+        private final String title;
+        private final String writer;
+        private final String content;
+        private final String createdDate, modifiedDate;
+        private final int view;
+        private final Long userId;
+
+        /* Entity -> Dto*/
+        public Response(Posts posts) {
+            this.id = posts.getId();
+            this.title = posts.getTitle();
+            this.writer = posts.getWriter();
+            this.content = posts.getContent();
+            this.createdDate = posts.getCreatedDate();
+            this.modifiedDate = posts.getModifiedDate();
+            this.view = posts.getView();
+            this.userId = posts.getUser().getId();
+        }
     }
 }

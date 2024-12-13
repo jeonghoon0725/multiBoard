@@ -1,5 +1,6 @@
 package com.jhhan.multiboard.posts.controller;
 
+import com.jhhan.multiboard.posts.dto.PostsDto;
 import com.jhhan.multiboard.posts.entity.Posts;
 import com.jhhan.multiboard.posts.service.PostsService;
 import com.jhhan.multiboard.system.dto.UserSessionDto;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -50,5 +52,18 @@ public class PostsController {
         return "posts/write";
     }
 
+    @GetMapping("/posts/info/{id}")
+    public String info(@PathVariable Long id, Model model, HttpSession session) {
+        UserSessionDto user = (UserSessionDto) session.getAttribute("user");
+        PostsDto.Response dto = postsService.findById(id);
+
+        /* 사용자 관련 */
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
+
+        model.addAttribute("posts", dto);
+        return "posts/info";
+    }
 
 }
