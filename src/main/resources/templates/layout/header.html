@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
-    <title>Headers · Bootstrap v5.3</title>
+    <title>훈터디</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
 
@@ -57,9 +57,10 @@
         }
     </style>
 
-    <script src="/bootstrap/site/static/docs/5.3/assets/js/color-modes.js"></script>
-
+<!--    <script src="/js/jquery-3.7.1.min.js"></script>-->
     <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </head>
 
 <main>
@@ -71,6 +72,10 @@
                 <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">블로그</a></li>
 <!--                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">FAQs</a></li>-->
                 <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
+                <!-- 관리자 권한이 있을 때만 표시 -->
+                <li class="nav-item" sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <a href="/admin/user/list" class="nav-link link-body-emphasis px-2">회원목록</a>
+                </li>
             </ul>
             <ul class="nav" sec:authorize="!isAuthenticated()">
                 <li class="nav-item"><a href="/user/login" class="nav-link link-body-emphasis px-2">로그인</a></li>
@@ -90,10 +95,6 @@
                             로그아웃
                         </button>
                     </form>
-                </li>
-                <!-- 관리자 권한이 있을 때만 표시 -->
-                <li class="nav-item" sec:authorize="hasAuthority('ROLE_ADMIN')">
-                    <a href="/user/list" class="nav-link link-body-emphasis px-2">회원목록</a>
                 </li>
             </ul>
         </div>

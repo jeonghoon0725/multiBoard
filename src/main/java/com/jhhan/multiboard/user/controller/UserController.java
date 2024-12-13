@@ -56,15 +56,6 @@ public class UserController {
         return "redirect:/user/login";
     }
 
-    @GetMapping("")
-    public String getAllUser(Model model, HttpSession session) {
-
-        List<User> users = userService.getAllUsers();
-
-        model.addAttribute("users", users);
-        return "user/list";
-    }
-
 
 //    @PostMapping ("/loginProc")
 //    public String loginForm(Model model) {
