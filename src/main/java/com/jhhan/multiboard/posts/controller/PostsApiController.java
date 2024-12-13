@@ -21,11 +21,10 @@ import javax.servlet.http.HttpSession;
 @RestController
 public class PostsApiController {
 
-    @Autowired
     private final PostsService postsService;
 
     /* CREATE */
-    @PostMapping("/posts")
+    @PostMapping
     public ResponseEntity save(@RequestBody PostsDto dto, HttpSession session) {
         UserSessionDto user = (UserSessionDto) session.getAttribute("user");
         return ResponseEntity.ok(postsService.save(dto, user.getNickname()));
