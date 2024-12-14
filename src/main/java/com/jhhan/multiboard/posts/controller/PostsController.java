@@ -62,7 +62,7 @@ public class PostsController {
             model.addAttribute("user", user);
         }
 
-        model.addAttribute("posts", dto);
+        model.addAttribute("post", dto);
         return "posts/info";
     }
 
