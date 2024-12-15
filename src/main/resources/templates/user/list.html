@@ -12,8 +12,8 @@
 
 
 <main>
-    <header class="py-3 mb-4 border-bottom">
-        <div class="container d-flex flex-wrap justify-content-center">
+    <header class="container py-3 mb-4 border-bottom">
+        <div class="d-flex flex-wrap justify-content-center">
             <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
                 <span class="fs-4">회원목록</span>
             </a>
@@ -24,8 +24,7 @@
     </header>
 </main>
 <main>
-    <div class="container flex-wrap">
-        <!--        <h2>게시판</h2>-->
+    <div class="container flex-wrap" style="height: 500px">
         <div class="table-responsive small">
             <table class="table table-striped table-sm">
                 <thead>
@@ -55,5 +54,7 @@
             </table>
         </div>
     </div>
+    <th:block th:include="posts/page"></th:block>
 </main>
-</html>
+
+<th:block th:include="layout/footer"></th:block>

@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @RequiredArgsConstructor//생성자 주입
@@ -23,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomUserDetailsService customUserDetailsService;
 
-    //private AuthenticationFailureHandler customFailureHandler;
+    private AuthenticationFailureHandler customFailureHandler;
 
     @Bean
     public BCryptPasswordEncoder encoder() {
@@ -76,6 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();//잠시 비활성화
+        //http.csrf().ignoringAntMatchers("/api/**");
 
         http.authorizeHttpRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
@@ -85,12 +87,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin()
             .loginPage("/user/login")
             .loginProcessingUrl("/loginProc")//낚아챌 내 로그인 페이지 호출 주소
-            //.failureHandler(customFailureHandler)
+            .failureHandler(customFailureHandler)
             .defaultSuccessUrl("/");
 
         http.logout()
             .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
             .invalidateHttpSession(true).deleteCookies("JSESSIONID")
             .logoutSuccessUrl("/");
+
+        //oauth2
     }
 }
