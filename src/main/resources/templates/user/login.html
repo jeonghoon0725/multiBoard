@@ -23,9 +23,9 @@
                 <label for="password">비밀번호</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력해주세요">
             </div>
-
-            <span class="exception-message">
-                <p id="valid" class="alert alert-dark">유효성검사</p>
+            <br>
+            <span th:if="${isError}">
+                <p id="valid" class="alert alert-danger" th:if="${exception}" th:text="${exception}"></p>
             </span>
 
             <button class="form-control btn btn-primary bi bi-lock-fill"> 로그인</button>

@@ -24,7 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomUserDetailsService customUserDetailsService;
 
-    private AuthenticationFailureHandler customFailureHandler;
+    /* 로그인 실패 핸들러 의존성 주입 */
+    private final AuthenticationFailureHandler customFailureHandler;
 
     @Bean
     public BCryptPasswordEncoder encoder() {

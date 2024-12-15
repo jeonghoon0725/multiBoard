@@ -12,6 +12,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -26,7 +27,11 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/login")
-    public String login() {
+    public String login(@RequestParam(value = "isError", required = false)String isError, @RequestParam(value = "exception", required = false)String exception, Model model) {
+
+        model.addAttribute("isError", isError);
+        model.addAttribute("exception", exception);
+
         return "user/login";
     }
 
@@ -65,6 +70,7 @@ public class UserController {
             return "/user/join";
         }
 
+        //중복검사 필요
         userService.userJoin(dto);
 
         return "redirect:/user/login";
