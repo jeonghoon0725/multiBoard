@@ -2,7 +2,6 @@ package com.jhhan.multiboard.user.controller;
 
 import com.jhhan.multiboard.system.dto.UserSessionDto;
 import com.jhhan.multiboard.user.dto.UserDto;
-import com.jhhan.multiboard.user.entity.User;
 import com.jhhan.multiboard.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Slf4j
 @Controller

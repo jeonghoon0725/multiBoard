@@ -38,11 +38,6 @@ public class PostsController {
         return "index";
     }
 
-    @GetMapping("/1")
-    public String index1() {
-        return "index1";
-    }
-
     @GetMapping("/posts/write")
     public String write(Model model, HttpSession session) {
         UserSessionDto user = (UserSessionDto) session.getAttribute("user");
@@ -60,6 +55,11 @@ public class PostsController {
         /* 사용자 관련 */
         if (user != null) {
             model.addAttribute("user", user);
+
+            /* 게시글 작성자 본인인지 확인 */
+            if (dto.getUserId().equals(user.getId())) {
+                model.addAttribute("isPostWriter", true);
+            }
         }
 
         model.addAttribute("post", dto);
