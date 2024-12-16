@@ -51,8 +51,9 @@ mysql 8.0.33
 
 AWS EC2, RDS
 1. Ubuntu LTS
-2. Git SSH 연동
-3. Git clone
-4. DB 연결 파일 직접 추가
+2. Git SSH 연동 : 
+3. Git clone : rm -rf multiBoard >> '~/.ssh'에서 git clone ~~ >> mv ~/.ssh/multiBoard ~/
+4. DB 연결 파일 직접 추가 : 해당 경로 가서 vi -real.yml > ctrl+shift+v > esc > :wq
 5. mvn clean package
+6. sudo java -jar -Duser.timezone=Asia/Seoul multiboard-0.0.1-SNAPSHOT.jar
 
