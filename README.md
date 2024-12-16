@@ -30,7 +30,7 @@ CI/CD 파이프라인
 
 2차 : 블로그
 <br>
-3차 : 
+3차 : 포트폴리오
 
 Java 11
 Spring Boot 2.7.13
@@ -46,3 +46,13 @@ javascript
 bootstrap 5.3.3
 
 mysql 8.0.33
+
+
+
+AWS EC2, RDS
+1. Ubuntu LTS
+2. Git SSH 연동
+3. Git clone
+4. DB 연결 파일 직접 추가
+5. mvn clean package
+
