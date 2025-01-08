@@ -27,7 +27,7 @@ spring:
       validation-timeout: 5000  # 커넥션 유효성 검사 타임아웃 설정 (ms)
       auto-commit: true  # 자동 커밋 모드 설정
   profiles:
-    active: real
+    active: local
 server:
   port: 7070
   servlet:
