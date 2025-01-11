@@ -8,6 +8,7 @@ class MultiBoardApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

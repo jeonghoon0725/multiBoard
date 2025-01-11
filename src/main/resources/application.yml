@@ -12,6 +12,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        # generate_statistics: true  # 배치 처리 통계 활성화
     show-sql: true
   datasource:
     url: ${db.url}

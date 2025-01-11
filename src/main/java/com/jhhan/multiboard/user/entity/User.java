@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Entity
+//@Table(name = "users") //h2 test할 때 user는 예약어
 public class User extends BaseTime {
 
     @Id
