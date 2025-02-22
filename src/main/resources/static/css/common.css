@@ -1,10 +1,8 @@
-#footer {
+footer {
   width: 100%;
-  height: 50px;
-  bottom: 0;
-  left: 0;
-  text-align:center;
-  line-height:50px;
+  height: 50px; /* 내용물에 따라 알맞는 값 설정 */
+  bottom: 0px;
+  position: absolute;
 }
 
 [id^="valid"] {
