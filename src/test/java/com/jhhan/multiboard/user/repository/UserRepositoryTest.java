@@ -1,7 +1,7 @@
 package com.jhhan.multiboard.user.repository;
 
-import com.jhhan.multiboard.user.entity.Role;
-import com.jhhan.multiboard.user.entity.User;
+import com.jhhan.multiboard.infrastructure.persistence.UserRepository;
+import com.jhhan.multiboard.domain.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
