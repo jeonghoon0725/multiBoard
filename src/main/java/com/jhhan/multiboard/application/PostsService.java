@@ -38,9 +38,22 @@ public class PostsService {
 
 
     public PostsDto.Response findById(Long id) {
-        Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다. id: " + id));
+        Posts posts = postsRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("해당 게시글이 존재하지 않습니다. id: " + id));
 
         return new PostsDto.Response(posts);
     }
 
+    @Transactional
+    public int updateView(Long id) {
+        return postsRepository.updateView(id);
+    }
+
+    @Transactional
+    public void update(Long id, PostsDto dto) {
+        Posts posts = postsRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("해당 게시글이 존재하지 않습니다. id: " + id));
+
+        posts.update(dto.getTitle(), dto.getContent());
+    }
 }

@@ -1,8 +1,17 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1; /* 본문 영역이 가변적으로 확장되도록 설정 */
+}
+
 footer {
   width: 100%;
-  height: 50px; /* 내용물에 따라 알맞는 값 설정 */
-  bottom: 0px;
-  position: relative;
+  height: 50px;
 }
 
 [id^="valid"] {

@@ -64,8 +64,35 @@ public class PostsController {
             }
         }
 
+        //댓글 불러오기
+
+        //댓글 작성자 본인인지 확인
+
+        //게시물 조회수
+        postsService.updateView(id);
+
         model.addAttribute("post", dto);
         return "posts/info";
     }
 
+    /**
+     * 수정 화면 이동
+     * @param id
+     * @param model
+     * @param session
+     * @return
+     */
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable Long id, Model model, HttpSession session) {
+        UserSessionDto user = (UserSessionDto) session.getAttribute("user");
+        PostsDto.Response post = postsService.findById(id);
+
+        /* 사용자 관련 */
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
+
+        model.addAttribute("post", post);
+        return "posts/update";
+    }
 }

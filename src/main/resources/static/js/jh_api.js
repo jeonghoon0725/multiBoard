@@ -71,7 +71,7 @@ const CommonScriptFunction = {
                     data: JSON.stringify(data)
                 }).done(function () {
                     alert("수정되었습니다.");
-                    window.location.href = '/posts/read/' + data.id;
+                    window.location.href = '/posts/info/' + data.id;
                 }).fail(function (error) {
                     alert(JSON.stringify(error));
                 });

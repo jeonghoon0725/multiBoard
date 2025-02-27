@@ -6,10 +6,7 @@ import com.jhhan.multiboard.application.dto.UserSessionDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -26,5 +23,12 @@ public class PostsApiController {
     public ResponseEntity save(@RequestBody PostsDto dto, HttpSession session) {
         UserSessionDto user = (UserSessionDto) session.getAttribute("user");
         return ResponseEntity.ok(postsService.save(dto, user.getNickname()));
+    }
+
+    /* UPDATE */
+    @PutMapping("/{id}")
+    public ResponseEntity update(@PathVariable Long id, @RequestBody PostsDto dto) {
+        postsService.update(id, dto);
+        return ResponseEntity.ok(id);
     }
 }
